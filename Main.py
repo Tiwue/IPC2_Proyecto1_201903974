@@ -1,12 +1,23 @@
 from pip._vendor.distlib.compat import raw_input
-
+from carga import cargar
 on=True
+root=None
+tree=None
 while(on==True):
     print("\nMenu Principal: \n1.Cargar archivo\n2.Procesar archivo\n3.Escibir archivo salida\n4.Mostrar datos del Estudiante\n5.Generar gráfica\n6.Salida")
     lectura=input("Eliga una Opción:\n")
     if lectura=="1":
         print("Cargar Archivo:")
-        raw_input("\nPresiona la tecla Enter para continuar")
+        try:
+            tree = cargar()
+            root= tree.getroot()
+            for element in root[0]:
+                print(element.text)
+            raw_input("\nPresiona la tecla Enter para continuar")
+        except:
+            print("No fue posible leer el archivo Seleccionado...")
+            raw_input("\nPresiona la tecla Enter para continuar")    
+        
     elif lectura=="2":
         print("Procesanding Archivo:")
         raw_input("\nPresiona la tecla Enter para continuar")
