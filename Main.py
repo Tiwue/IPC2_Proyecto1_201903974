@@ -1,5 +1,8 @@
+#C:\Users\steve\Desktop\prueba.xml
 from pip._vendor.distlib.compat import raw_input
 from carga import cargar
+from procesamiento import procesar
+
 on=True
 root=None
 tree=None
@@ -11,8 +14,8 @@ while(on==True):
         try:
             tree = cargar()
             root= tree.getroot()
-            for element in root[0]:
-                print(element.text)
+            print("Archivo subido correctamente")
+                        
             raw_input("\nPresiona la tecla Enter para continuar")
         except:
             print("No fue posible leer el archivo Seleccionado...")
@@ -20,6 +23,10 @@ while(on==True):
         
     elif lectura=="2":
         print("Procesanding Archivo:")
+        if root is not None:
+            procesar(root)
+        else:
+            print("Debe cargar un archivo primero")    
         raw_input("\nPresiona la tecla Enter para continuar")
     elif lectura=="3":
         print("Escribir archivo del estudiante")
