@@ -1,6 +1,8 @@
 from listaDatos import Lista
+from listaMatrices import ListaM
 
-
+matrices=ListaM()
+reducidas=ListaM()
 
 def validarDimensiones(root):
     
@@ -18,23 +20,40 @@ def validarDimensiones(root):
                 return False
             else:
                 continue
-    return True   
+          
+    return True  
+
+
 
 def crearLista(root):
-    datos=Lista()
-   
+    print("Iniciando carga de datos en memoria")
+    
     for element in root:
+        datos=Lista()
         for subelement in element:
             dato=subelement.text
             x=subelement.attrib['x']
             y=subelement.attrib['y']
-            datos.add(dato,x,y)
-    datos.toString()
+            identidad=0
+            if dato is not 0:
+                identidad=1
+            datos.add(dato,x,y,identidad)
+        nombre=element.attrib['nombre']
+        n=element.attrib['n']
+        m=element.attrib['m']
+        matrices.add(nombre,n,m,datos)
+
+    
+    print("Datos Cargados en memoria....")        
+
+
 
 
 def procesar(root):
     valida = validarDimensiones(root)
     if valida == True:
+        print("Dimensiones correctas...")  
         crearLista(root)
+        
     else:
         print("Intente cargar un nuevo archivo")    
