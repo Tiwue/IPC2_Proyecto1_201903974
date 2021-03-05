@@ -1,7 +1,7 @@
 from nodoListaMatrices import ListaMatrices
 from listaDatos import Lista
 from listaFrecuencias import listaFrecuencias
-from procesamiento import reducidas
+
 
 class ListaM:
     def __init__(self):
@@ -34,17 +34,19 @@ class ListaM:
             
     def reducir(self):
         temp=self.inicio
-        
+        reducidas=ListaM()
         while temp is not None:
+            index=0
             i=1
             datosredus=Lista()
-            while temp.n >= i:
+            frecuencias=listaFrecuencias()
+            while int(temp.n) >= i:
                 frecs=1
                 k=i+1
-                while temp.n >k:
+                while int(temp.n) >=k:
                     j=1
                     coincidencias=0
-                    while j<=temp.m:
+                    while j<=int(temp.m):
                         
                         arriba=temp.datos.getIdentidad(i,j)
                         abajo=temp.datos.getIdentidad(k,j)
@@ -53,18 +55,31 @@ class ListaM:
                                 coincidencias += 1
                         j += 1  
 
-                    if coincidencias== temp.m:
+                    if coincidencias== int(temp.m):
                         h=1           
-                                       
-                        while h<=temp.m:
+                                
+                        while h<=int(temp.m):
                             arriba=temp.datos.getDato(i,h)
                             abajo=temp.datos.getDato(k,h)
                             nuevoDato=arriba+abajo
-                            datosredus.add(nuevoDato,i,h,temp.datos.getIdentidad(i,h))##corregir coordenadas
+                            temp.datos.setDato(i,h,nuevoDato)
                             temp.datos.eliminar(k,h)
                             
                             h += 1  
                         frecs +=1
+                        
                     k += 1
+                frecuencias.add(frecs,i)
+                h=1
+                if temp.datos.getDato(i,1) != None:
+                    index += 1   
+                while h<=int(temp.m):
+                    if temp.datos.getDato(i,h) != None:
+                        dato=temp.datos.getDato(i,h)
+                        identidad=temp.datos.getIdentidad(i,h)
+                        datosredus.add(dato,index,h,identidad)
+                    h+=1
                 i +=1
+            reducidas.add("Ejemplo Salida",index,temp.m,datosredus)
             temp = temp.siguiente        
+        return reducidas    

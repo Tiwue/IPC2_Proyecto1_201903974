@@ -44,17 +44,21 @@ class Lista:
                 return temp.identidad
             temp=temp.siguiente
         return None
+
     def eliminar(self, x,y):
         temp = self.inicio
         prev = None
-        while temp.y != y and temp.x != x:
-            prev = temp
-            temp = temp.siguiente
-        if prev is None:
-            self.inicio = temp.siguiente
-        elif temp:
-            prev.siguiente = temp.siguiente
-            temp.siguiente = None
+        encontrado= False
+        while not encontrado:
+           if int(temp.x) == x and int(temp.y)==y:
+               encontrado=True
+           else:
+               prev = temp
+               temp = temp.siguiente
+        if prev == None:
+            self.inicio=temp.siguiente
+        else:
+            prev.siguiente=temp.siguiente               
 
     def setDato(self,x,y,dato):
         temp=self.inicio

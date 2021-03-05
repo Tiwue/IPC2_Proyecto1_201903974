@@ -35,17 +35,18 @@ def crearLista(root):
             x=subelement.attrib['x']
             y=subelement.attrib['y']
             identidad=0
-            if dato is not 0:
+            if int(dato) != 0:
                 identidad=1
-            datos.add(dato,x,y,identidad)
+            datos.add(int(dato),int(x),int(y),identidad)
         nombre=element.attrib['nombre']
         n=element.attrib['n']
         m=element.attrib['m']
         matrices.add(nombre,n,m,datos)
 
-    
+    reducidas=matrices.reducir()
+    reducidas.imprimir()
     print("Datos Cargados en memoria....")        
-
+    
 
 
 
