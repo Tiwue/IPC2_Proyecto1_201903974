@@ -41,14 +41,17 @@ def crearLista(root):
         nombre=element.attrib['nombre']
         n=element.attrib['n']
         m=element.attrib['m']
-        matrices.add(nombre,n,m,datos)
+        matrices.add(nombre,n,m,datos,None)
 
+    global reducidas
     reducidas=matrices.reducir()
-    reducidas.imprimir()
+   
     print("Datos Cargados en memoria....")        
     
 
-
+def generarXML():
+    reducidas.generarXML()
+    
 
 def procesar(root):
     valida = validarDimensiones(root)

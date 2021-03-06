@@ -2,6 +2,7 @@
 from pip._vendor.distlib.compat import raw_input
 from carga import cargar
 from procesamiento import procesar
+from procesamiento import generarXML
 
 on=True
 root=None
@@ -22,17 +23,18 @@ while(on==True):
             raw_input("\nPresiona la tecla Enter para continuar")    
         
     elif lectura=="2":
-        print("Procesanding Archivo:")
+        print("Procesando Archivo:")
         if root is not None:
             procesar(root)
         else:
             print("Debe cargar un archivo primero")    
         raw_input("\nPresiona la tecla Enter para continuar")
     elif lectura=="3":
-        print("Escribir archivo del estudiante")
+        generarXML()
         raw_input("\nPresiona la tecla Enter para continuar")
     elif lectura=="4":
-        print("Datos Mios :D")
+        print("Steven Josue González Monroy\n201903974\nIntroduccion a la Programacion y Computacion 2 Seccion D\nIngenieria en Ciencias y Sistemas")
+
         raw_input("\nPresiona la tecla Enter para continuar")
     elif lectura=="5":
         print("Generar Gráfica")

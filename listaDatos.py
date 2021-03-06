@@ -1,4 +1,5 @@
 from nodoDato import Dato
+import xml.etree.ElementTree as ET
 
 class Lista:
     def __init__(self):
@@ -66,4 +67,13 @@ class Lista:
             if int(temp.x) == x and int(temp.y)==y:
                 temp.dato = dato
             temp=temp.siguiente 
-      
+    
+    def XML(self,matriz):
+
+        temp=self.inicio
+        while temp is not None:
+            dato= ET.SubElement(matriz, "dato")
+            dato.set('x',str(temp.x))
+            dato.set('y',str(temp.y))
+            dato.text=str(temp.dato)
+            temp=temp.siguiente

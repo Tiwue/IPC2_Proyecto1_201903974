@@ -1,5 +1,5 @@
 from nodoFrecuencias import Frecuencia
-
+import xml.etree.ElementTree as ET
 class listaFrecuencias:
     def __init__(self):
         self.inicio=None
@@ -37,3 +37,10 @@ class listaFrecuencias:
             temp=temp.siguiente     
         return None
 
+    def XML(self,matriz):
+        temp=self.inicio
+        while temp is not None:
+            frecuencia= ET.SubElement(matriz, "frecuencia")
+            frecuencia.set('g',str(temp.grupo))
+            frecuencia.text= str(temp.frecuencia)
+            temp=temp.siguiente
