@@ -126,8 +126,9 @@ class ListaM:
         temp=self.inicio
         num=1
         while temp is not None:
-            if numero==num:
+            if int(numero)==num:
                 return temp
-            else:
-                num +=1
+            num +=1
             temp=temp.siguiente        
+
+    

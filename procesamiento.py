@@ -55,28 +55,15 @@ def generarXML():
     reducidas.generarXML()
     
 def generarGraficas():
+    global reducidas
     print("\nIngrese el numero de la matriz que desea graficas:\n")
     reducidas.getName()
     numero=input()
     matriz=reducidas.getMatriz(numero)
-    temp = """
-    digraph G{
-    Edge [dir=forward]
-    node [shape=plaintext]
-
-    0 [label="0 (None)"]
-    0 -> 5 [label="root"]
-    1 [label="1 (Hello)"]
-    2 [label="2 (how)"]
-    2 -> 1 [label="advmod"]
-    3 [label="3 (are)"]
-    4 [label="4 (you)"]
-    5 [label="5 (doing)"]
-    5 -> 3 [label="aux"]
-    5 -> 2 [label="advmod"]
-    5 -> 4 [label="nsubj"]
-    }
-    """
+    inicio = "digraph G { n[label=\"n="+str(matriz.n)+"\"]m[label=\"m="+str(matriz.m)+"\"]titulo [shape=diamond, label=\"matrices\"];matrix [label=<<table color='orange' cellspacing='0'>"
+    tabla=matriz.generarTabla()
+    fin="</table>>, shape=none]matriz[label=\""+matriz.nombre+"\"]titulo -> matriz;matriz -> n;matriz -> m;matriz -> matrix}"
+    temp=inicio+tabla+fin
     s = Source(temp, filename="test", format="png")
     s.view()
 
