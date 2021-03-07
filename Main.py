@@ -3,7 +3,7 @@ from pip._vendor.distlib.compat import raw_input
 from carga import cargar
 from procesamiento import procesar
 from procesamiento import generarXML
-
+from procesamiento import generarGraficas
 on=True
 root=None
 tree=None
@@ -37,7 +37,7 @@ while(on==True):
 
         raw_input("\nPresiona la tecla Enter para continuar")
     elif lectura=="5":
-        print("Generar Gráfica")
+        generarGraficas()
         raw_input("\nPresiona la tecla Enter para continuar")
     elif lectura=="6":
         print("Off :C")

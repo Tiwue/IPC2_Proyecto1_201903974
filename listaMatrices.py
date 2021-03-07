@@ -3,6 +3,7 @@ from listaDatos import Lista
 from listaFrecuencias import listaFrecuencias
 import xml.etree.ElementTree as ET
 
+
 class ListaM:
     def __init__(self):
         self.inicio=None
@@ -80,7 +81,7 @@ class ListaM:
                         datosredus.add(dato,index,h,identidad)
                     h+=1
                 i +=1
-            reducidas.add("Ejemplo Salida",index,temp.m,datosredus,frecuencias)
+            reducidas.add("Matriz",index,temp.m,datosredus,frecuencias)
             temp = temp.siguiente        
         return reducidas    
 
@@ -92,10 +93,8 @@ class ListaM:
         return False
 
     def vaciar(self):
-        temp=self.inicio
-        while temp is not None:
-            temp.siguiente=None
-            temp =None    
+        self.inicio.siguiente = None
+        self.inicio =None    
             
     def generarXML(self):
         
@@ -114,4 +113,21 @@ class ListaM:
         myfile=open("matrizReducida.xml", "wb")
         myfile.write(misdatos)
         myfile.close()
-                
+
+    def getName(self):
+        temp=self.inicio
+        num=1
+        while temp is not None:
+            print(str(num)+"." + temp.nombre)
+            num+=1
+            temp = temp.siguiente           
+
+    def getMatriz(self,numero):
+        temp=self.inicio
+        num=1
+        while temp is not None:
+            if numero==num:
+                return temp
+            else:
+                num +=1
+            temp=temp.siguiente        

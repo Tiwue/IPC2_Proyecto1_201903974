@@ -8,6 +8,6 @@ def cargar():
         tree=ET.parse(ruta)
     else:
         matrices.vaciar()
-        matrices.reducir()
+        reducidas.vaciar()
         tree=ET.parse(ruta)
     return tree
