@@ -70,9 +70,10 @@ class ListaM:
                         frecs +=1
                         
                     k += 1
-                frecuencias.add(frecs,i)
+                
                 h=1
                 if temp.datos.getDato(i,1) != None:
+                    frecuencias.add(frecs,index+1)
                     index += 1   
                 while h<=int(temp.m):
                     if temp.datos.getDato(i,h) != None:
@@ -93,14 +94,16 @@ class ListaM:
         return False
 
     def vaciar(self):
-        self.inicio.siguiente = None
-        self.inicio =None    
+        if self.inicio is not None:
+            self.inicio.siguiente = None
+            self.inicio =None    
             
     def generarXML(self):
         
         temp=self.inicio
         root = ET.Element('matrices')
         while temp is not None:
+            print("Generando arbol de elementos...")
             matriz = ET.SubElement(root,'matriz')
             matriz.set('nombre',temp.nombre)
             matriz.set('n',str(temp.n))
@@ -109,9 +112,13 @@ class ListaM:
             temp.datos.XML(matriz)
             temp.frecuencias.XML(matriz)
             temp=temp.siguiente
+        print("Datos obtenidos con exito...")
         misdatos=ET.tostring(root)
+        print("transformando datos a cadena...")
         myfile=open("matrizReducida.xml", "wb")
+        print("Creando archivo...")
         myfile.write(misdatos)
+        print("Datos escritos con exito...")
         myfile.close()
 
     def getName(self):

@@ -46,12 +46,15 @@ def crearLista(root):
         matrices.add(nombre,n,m,datos,None)
 
     global reducidas
+    reducidas.vaciar()
     reducidas=matrices.reducir()
    
     print("Datos Cargados en memoria....")        
     
 
 def generarXML():
+    
+    print("Iniciando generacion de archivo...")
     reducidas.generarXML()
     
 def generarGraficas():

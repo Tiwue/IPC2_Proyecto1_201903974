@@ -23,7 +23,7 @@ while(on==True):
             raw_input("\nPresiona la tecla Enter para continuar")    
         
     elif lectura=="2":
-        print("Procesando Archivo:")
+        print("Procesando Archivo...")
         if root is not None:
             procesar(root)
         else:
